@@ -41,7 +41,8 @@ public class Register_Activity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = (boolean) jsonObject.get("success");
+                            boolean success = jsonObject.getBoolean("success");
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Register_Activity.this);
 
                             if (success)
                             {
@@ -50,7 +51,6 @@ public class Register_Activity extends AppCompatActivity {
                             }
                             else
                             {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(Register_Activity.this);
                                 builder.setMessage("Registration failure!").setNegativeButton("Retry",null).create().show();
                             }
 
